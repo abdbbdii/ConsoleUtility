@@ -18,6 +18,29 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Colors.h" />
+    <ClInclude Include="Console.h" />
+    <ClInclude Include="ConsoleUtility.h" />
+    <ClInclude Include="Cursor.h" />
+    <ClInclude Include="Table.h" />
+    <ClInclude Include="TextFormatter.h" />
+    <ClInclude Include="Trie.h" />
+    <ClInclude Include="Utils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Colors.cpp" />
+    <ClCompile Include="Console.cpp" />
+    <ClCompile Include="Cursor.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Table.cpp" />
+    <ClCompile Include="TextFormatter.cpp" />
+    <ClCompile Include="Trie.cpp" />
+    <ClCompile Include="Utils.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="words.txt" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -127,24 +150,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\..\..\..\abd_codespace\C++ Programs\Utils\Colors.cpp" />
-    <ClCompile Include="..\..\..\..\..\abd_codespace\C++ Programs\Utils\Console.cpp" />
-    <ClCompile Include="..\..\..\..\..\abd_codespace\C++ Programs\Utils\Cursor.cpp" />
-    <ClCompile Include="..\..\..\..\..\abd_codespace\C++ Programs\Utils\main.cpp" />
-    <ClCompile Include="..\..\..\..\..\abd_codespace\C++ Programs\Utils\Table.cpp" />
-    <ClCompile Include="..\..\..\..\..\abd_codespace\C++ Programs\Utils\TextFormatter.cpp" />
-    <ClCompile Include="..\..\..\..\..\abd_codespace\C++ Programs\Utils\Utils.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\abd_codespace\C++ Programs\Utils\Colors.h" />
-    <ClInclude Include="..\..\..\..\..\abd_codespace\C++ Programs\Utils\Console.h" />
-    <ClInclude Include="..\..\..\..\..\abd_codespace\C++ Programs\Utils\ConsoleUtility.h" />
-    <ClInclude Include="..\..\..\..\..\abd_codespace\C++ Programs\Utils\Cursor.h" />
-    <ClInclude Include="..\..\..\..\..\abd_codespace\C++ Programs\Utils\Table.h" />
-    <ClInclude Include="..\..\..\..\..\abd_codespace\C++ Programs\Utils\TextFormatter.h" />
-    <ClInclude Include="..\..\..\..\..\abd_codespace\C++ Programs\Utils\Utils.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
