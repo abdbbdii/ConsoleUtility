@@ -104,9 +104,7 @@ Use utility functions for common tasks:
 int main() {
     std::string text = "one,two,three";
     std::vector<std::string> tokens = Utils::split(text, ',');
-    for (const auto& token : tokens) {
-        std::cout << token << std::endl;
-    }
+    Utils::print_vector(tokens);
     return 0;
 }
 ```
