@@ -136,6 +136,8 @@ string Console::get_input(const string& message, const bool& suggestions, const 
 	char key;
 	bool arrow_key_pressed = false;
 	int selected = 0;
+	int prev_selected = 0;
+	int column_width = 0;
 	vector<string> suggested;
 	int cursor_pos = 1;
 
@@ -143,7 +145,7 @@ string Console::get_input(const string& message, const bool& suggestions, const 
 		key = _getch();
 		if (key == 13) // enter_key
 			break;
-		else if (key == 9) { // tab_key
+		else if (key == 9 && !password) { // tab_key
 			auto tokens = Utils::split(input, ' ');
 			string sub = input.substr(0, input.length() - token.length());
 			Cursor::move_left(token.length());
@@ -186,33 +188,45 @@ string Console::get_input(const string& message, const bool& suggestions, const 
 			selected = 0;
 		}
 
-		if (!suggestions || password)
+		if (!suggestions || password) {
 			continue;
-		if (token.length() == 0)
-			suggested.clear();
-		else
-			suggested = Trie::words.get_suggestions(token, 10);
+		}
+		else if (!arrow_key_pressed) {
+			if (token.length() == 0)
+				suggested.clear();
+			else{
+				suggested = Trie::words.get_suggestions(token, 10);
+				column_width = Utils::max_column_width(suggested) + 2;
+			}
+			Cursor::move_to(init_pos[0] + 4, 1);
+			Cursor::clear_screen_from_cursor();
+		}
+		else if (arrow_key_pressed) {
+			if (selected < 0)
+				selected = suggested.size() - 1;
+			else if (selected >= suggested.size())
+				selected = 0;
+		}
 
-		Cursor::move_to(init_pos[0] + 4, 1);
-		Cursor::clear_screen_from_cursor();
+		if (suggested.size() != 0) {
+			if (!arrow_key_pressed) {
+				for (int i = 0; i < suggested.size(); i++)
+					print(' ' + suggested[i], Colors::UNSELECTED, column_width);
+			}
+			else if (arrow_key_pressed) {
+				Cursor::move_to(init_pos[0] + 4 + prev_selected, 1);
+				print(' ' + suggested[prev_selected], Colors::UNSELECTED, column_width);
+			}
+			Cursor::move_to(init_pos[0] + 4 + selected, 1);
+			print(' ' + suggested[selected], Colors::SELECTED, column_width);
+		}
 
-		if (selected < 0)
-			selected = suggested.size() - 1;
-		else if (selected >= suggested.size())
-			selected = 0;
-
-		for (int i = 0; i < suggested.size(); i++)
-			if (i == selected)
-				print(' ' + suggested[i], Colors::SELECTED, Utils::max_column_width(suggested) + 2);
-			else
-				print(' ' + suggested[i], Colors::UNSELECTED, Utils::max_column_width(suggested) + 2);
-
+		prev_selected = selected;
 		Cursor::move_to(init_pos[0] + 3, cursor_pos);
+
 	} while (true);
-	cout << TextFormatter::RESET << endl;
 	Cursor::move_to(init_pos[0], init_pos[1]);
 	Cursor::clear_screen_from_cursor();
-	Utils::strip(input);
 	return input;
 }
 
