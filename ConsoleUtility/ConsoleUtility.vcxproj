@@ -45,7 +45,7 @@
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{159e9383-44fa-4d80-92fe-7b40fe2b1de4}</ProjectGuid>
-    <RootNamespace>Project1</RootNamespace>
+    <RootNamespace>ConsoleUtility</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <ProjectName>ConsoleUtility</ProjectName>
   </PropertyGroup>
