@@ -41,9 +41,6 @@
   <ItemGroup>
     <Text Include="words.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="data.csv" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>

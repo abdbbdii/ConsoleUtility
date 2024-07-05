@@ -71,9 +71,4 @@
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="data.csv">
-      <Filter>Resource Files</Filter>
-    </None>
-  </ItemGroup>
 </Project>
