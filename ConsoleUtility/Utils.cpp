@@ -54,3 +54,42 @@ int Utils::max_column_width(const vector<string>& arr) {
 			column_width = str.length();
 	return column_width;
 }
+
+void Utils::save_csv(const string& filename, const vector<vector<string>>& data, const vector<string>& headers, const string& delimiter) {
+	ofstream file(filename);
+	if (headers.size() > 0) {
+		for (int i = 0; i < headers.size(); i++) {
+			file << headers[i];
+			if (i < headers.size() - 1)
+				file << delimiter;
+		}
+		file << endl;
+	}
+	for (int i = 0; i < data.size(); i++) {
+		for (int j = 0; j < data[i].size(); j++) {
+			file << data[i][j];
+			if (j < data[i].size() - 1)
+				file << delimiter;
+		}
+		file << endl;
+	}
+	file.close();
+}
+
+vector<vector<string>> Utils::load_csv(const string& filename, const bool include_first_row, const string& delimiter) {
+	vector<vector<string>> data;
+	ifstream file(filename);
+	if (!file.is_open()) {
+		throw runtime_error("File not found");
+	}
+	string line;
+	if (!include_first_row)
+		getline(file, line);
+	while (getline(file, line)) {
+		vector<string> row = split(line, ',');
+		data.push_back(row);
+	}
+	file.close();
+	return data;
+}
+

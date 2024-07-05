@@ -16,10 +16,10 @@ using namespace std;
 
 class Table {
 private:
-    vector<string> _headers = {};
-    vector<vector<string>> _data = { {} };
-    vector<int> _column_widths = {};
-    int _total_width = 0;
+    vector<string> _headers;
+    vector<vector<string>> _data;
+    vector<int> _column_widths;
+    int _total_width;
     static const vector<vector<vector<wstring>>> _styles;
 
 private:
@@ -32,9 +32,9 @@ private:
 public:
     Table();
     Table(const vector<string>& headers, const vector<vector<string>>& data);
-    Table(vector<vector<string>>& data);
-    void display(int style = 0);
-    void c_display();
+    Table(const vector<vector<string>>& data, const bool with_header = false);
+    void display(const int style = 0, const vector<bool>&mask = {});
+    void c_display(const vector<bool>& mask = {});
     vector<int> selector();
     vector<int> selector_alt();
 };

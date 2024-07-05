@@ -1,5 +1,3 @@
-#pragma once
-
 #include "Trie.h"
 
 TrieNode::TrieNode() : is_end(false) {}

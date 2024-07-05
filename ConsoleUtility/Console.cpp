@@ -1,6 +1,4 @@
-﻿#pragma once
-
-#include "Console.h"
+﻿#include "Console.h"
 
 void Console::clear() {
 	system("cls");
@@ -139,7 +137,13 @@ string Console::get_input(const string& message, const bool& suggestions, const 
 	int prev_selected = 0;
 	int column_width = 0;
 	vector<string> suggested;
+	int n_results = 10;
 	int cursor_pos = 1;
+
+	for (int i = 0; i < n_results + 1; i++)
+		cout << endl;
+	Cursor::move_up(n_results + 1);
+	init_pos = { Cursor::get_position()[0] - 3, init_pos[1] };
 
 	do {
 		key = _getch();
@@ -188,13 +192,13 @@ string Console::get_input(const string& message, const bool& suggestions, const 
 			selected = 0;
 		}
 
-		if (!suggestions || password) {
+		if (!suggestions || password)
 			continue;
-		}
+
 		else if (!arrow_key_pressed) {
 			if (token.length() == 0)
 				suggested.clear();
-			else{
+			else {
 				suggested = Trie::words.get_suggestions(token, 10);
 				column_width = Utils::max_column_width(suggested) + 2;
 			}
