@@ -273,3 +273,38 @@ void Console::print_matrix(const vector<vector<int>>& matrix, bool determinent) 
 
 	_setmode(_fileno(stdout), _O_TEXT);
 }
+
+wstring Console::stows(const string& str) {
+	return wstring_convert<codecvt_utf8<wchar_t>>().from_bytes(str);
+}
+
+
+string Console::wstos(const wstring& str) {
+	return wstring_convert<codecvt_utf8<wchar_t>>().to_bytes(str);
+}
+
+void Console::wprint(const wstring& str, const string& format, const int& set_width, const bool& centered, bool endline) {
+	wstring pre_text = L"";
+	if (centered && set_width)
+		pre_text = wstring((set_width - str.length()) / 2, L' ');
+
+	_setmode(_fileno(stdout), _O_U16TEXT);
+	wcout << stows(format);
+	if (set_width)
+		wcout << left << setw(set_width);
+	wcout << pre_text + str << stows(TextFormatter::RESET) << ((endline) ? L"\n" : L"");
+	_setmode(_fileno(stdout), _O_TEXT);
+}
+
+void Console::rgb_print(string s, int duration, int speed) {
+	Cursor::hide();
+	vector<int> v = Cursor::get_position();
+	for (int i = 0; i < duration / speed; i++) {
+		Cursor::move_to(v[0], v[1]);
+		for (int j = 0; j < s.length(); j++)
+			Console::print(string(1, s[j]), TextFormatter::hsl_to_ansi((360 / s.length()) * (i + j) % 360, 100, 50), 0, true, false);
+		Sleep(speed);
+	}
+	Cursor::move_to(v[0], v[1]);
+	Cursor::show();
+}

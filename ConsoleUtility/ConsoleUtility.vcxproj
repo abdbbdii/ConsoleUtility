@@ -19,24 +19,24 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Colors.h" />
-    <ClInclude Include="Console.h" />
-    <ClInclude Include="ConsoleUtility.h" />
-    <ClInclude Include="Cursor.h" />
-    <ClInclude Include="Table.h" />
-    <ClInclude Include="TextFormatter.h" />
-    <ClInclude Include="Trie.h" />
-    <ClInclude Include="Utils.h" />
+    <ClInclude Include="src\Colors.h" />
+    <ClInclude Include="src\Console.h" />
+    <ClInclude Include="src\ConsoleUtility.h" />
+    <ClInclude Include="src\Cursor.h" />
+    <ClInclude Include="src\Table.h" />
+    <ClInclude Include="src\TextFormatter.h" />
+    <ClInclude Include="src\Trie.h" />
+    <ClInclude Include="src\Utils.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Colors.cpp" />
-    <ClCompile Include="Console.cpp" />
-    <ClCompile Include="Cursor.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Table.cpp" />
-    <ClCompile Include="TextFormatter.cpp" />
-    <ClCompile Include="Trie.cpp" />
-    <ClCompile Include="Utils.cpp" />
+    <ClCompile Include="src\Colors.cpp" />
+    <ClCompile Include="src\Console.cpp" />
+    <ClCompile Include="src\Cursor.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Table.cpp" />
+    <ClCompile Include="src\TextFormatter.cpp" />
+    <ClCompile Include="src\Trie.cpp" />
+    <ClCompile Include="src\Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="words.txt" />
@@ -94,6 +94,24 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)bin\intermediates\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)bin\intermediates\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)bin\intermediates\$(Platform)\$(Configuration)\</IntDir>
+    <PublicIncludeDirectories>C:\Users\ar69k\OneDrive - student.uet.edu.pk\Documents\abd_codespace\C++ Programs\abd-include</PublicIncludeDirectories>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)bin\intermediates\$(Platform)\$(Configuration)\</IntDir>
+    <PublicIncludeDirectories>C:\Users\ar69k\OneDrive - student.uet.edu.pk\Documents\abd_codespace\C++ Programs\abd-include</PublicIncludeDirectories>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
