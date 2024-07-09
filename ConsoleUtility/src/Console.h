@@ -37,7 +37,6 @@ public:
 	static wstring stows(const string& str);
 	static string wstos(const wstring& str);
 	static void wprint(const wstring& str, const string& format = TextFormatter::RESET, const int& set_width = 0, const bool& centered = false, bool endline = true);
-	static void rgb_print(string s, int duration = 1000, int speed = 50);
 
 	template <typename T>
 	static T map_selector(const unordered_map<T, string>& options, const string& heading) {

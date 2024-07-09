@@ -35,8 +35,10 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Table.cpp" />
     <ClCompile Include="src\TextFormatter.cpp" />
+    <ClCompile Include="src\Transition.cpp" />
     <ClCompile Include="src\Trie.cpp" />
     <ClCompile Include="src\Utils.cpp" />
+    <ClCompile Include="src\Transition.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="words.txt" />

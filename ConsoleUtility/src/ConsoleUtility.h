@@ -6,6 +6,7 @@
 #include "Table.h"
 #include "TextFormatter.h"
 #include "Utils.h"
+#include "Transition.h"
 
 // using namespace std;
 // Why any one would use "using namespace std;"??

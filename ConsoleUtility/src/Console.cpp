@@ -137,7 +137,7 @@ string Console::get_input(const string& message, const bool& suggestions, const 
 	int prev_selected = 0;
 	int column_width = 0;
 	vector<string> suggested;
-	int n_results = 10;
+	int n_results = Cursor::get_screen_size()[0] - init_pos[0] - 3;
 	int cursor_pos = 1;
 
 	for (int i = 0; i < n_results + 1; i++)
@@ -199,7 +199,7 @@ string Console::get_input(const string& message, const bool& suggestions, const 
 			if (token.length() == 0)
 				suggested.clear();
 			else {
-				suggested = Trie::words.get_suggestions(token, 10);
+				suggested = Trie::words.get_suggestions(token, n_results);
 				column_width = Utils::max_column_width(suggested) + 2;
 			}
 			Cursor::move_to(init_pos[0] + 4, 1);
@@ -294,17 +294,4 @@ void Console::wprint(const wstring& str, const string& format, const int& set_wi
 		wcout << left << setw(set_width);
 	wcout << pre_text + str << stows(TextFormatter::RESET) << ((endline) ? L"\n" : L"");
 	_setmode(_fileno(stdout), _O_TEXT);
-}
-
-void Console::rgb_print(string s, int duration, int speed) {
-	Cursor::hide();
-	vector<int> v = Cursor::get_position();
-	for (int i = 0; i < duration / speed; i++) {
-		Cursor::move_to(v[0], v[1]);
-		for (int j = 0; j < s.length(); j++)
-			Console::print(string(1, s[j]), TextFormatter::hsl_to_ansi((360 / s.length()) * (i + j) % 360, 100, 50), 0, true, false);
-		Sleep(speed);
-	}
-	Cursor::move_to(v[0], v[1]);
-	Cursor::show();
 }
